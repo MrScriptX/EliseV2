@@ -16,7 +16,8 @@ let command = {
     "ping": {
         "description": "Check if Elise is alive.",
         process: async (message, args) => {
-            await message.channel.send(`Tuturuuuu!`);
+            if(args[0] === 'pong')  await message.channel.send(`Je ne suis pas chinoise !`);
+            else await message.channel.send(`Tuturuuuu!`);
         }
     },
     "mute": {
