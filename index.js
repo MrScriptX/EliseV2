@@ -16,7 +16,8 @@ let command = {
     "ping": {
         "description": "Check if Elise is alive.",
         process: async (message, args) => {
-            await message.channel.send(`Tuturuuuu!`);
+            if(args[0] === 'pong')  await message.channel.send(`Je ne suis pas chinoise !`);
+            else await message.channel.send(`Tuturuuuu!`);
         }
     },
     "mute": {
@@ -64,7 +65,9 @@ client.on('message', async message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const cmd = args.shift().toLowerCase();
 
-    command[cmd].process(message, args);
+    console.log(cmd + ' ' + args[0]);
+
+    if(command[cmd] != undefined) command[cmd].process(message, args);
 });
 
 client.login(process.env.TOKEN);
